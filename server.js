@@ -5,10 +5,8 @@ const cors = require('cors');
 const db = require('knex')({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      user : 'postgres',
-      password : '',
-      database : 'smart'
+      connectString : process.env.DATABASE_URL,
+      ssl:true
     }
   });
 db.select('*').from('users').then(data=>{
